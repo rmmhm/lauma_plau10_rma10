@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>SQL database table:</h1>
+        <img src="static/database.png">
+        <h2>All the inputs below search through the database to find accounts that match with the given ID or username and return the account information</h2>
+        <p style="color:red;">Input "1 OR 1=1" (without quotation marks) to return the entire database</p>
+        <form action="/injection1" method="post">
+            Unsafe userID: <input type="text" name="badUserID">
+            <br>
+            <input type="submit">
+        </form>
+        <p style="color:red;">Input (" or ""=") (without quotation marks) to return the entire database</p>
+        <form action="injection2" method="post">
+            Unsafe username: <input type="text" name="badUsername">
+            <br>
+            <input type="submit">
+        </form>
+        <p style="color:red;">Inputting "1 OR 1=1" (without quotation marks) will fail to return the entire database</p>
+        <form action="/userID" method="post">
+            userID: <input type="text" name="userID">
+            <br>
+            <input type="submit">
+        </form>
+        <p style="color:red;">Inputting (" or ""=") (without quotation marks) will fail to return the entire database</p>
+        <form action="username" method="post">
+            username: <input type="text" name="username">
+            <br>
+            <input type="submit">
+        </form>
+        {% for item in data %}
+            {{ item }}
+            <br>
+        {% endfor %}
+    </body>
+</html>
